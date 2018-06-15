@@ -1,7 +1,9 @@
-import React,{Component} from 'react'
+import React from 'react'
 import './proList.scss'
 import axois from 'axios'
-class ProList extends Component {
+import { withRouter } from 'react-router-dom'
+
+export default withRouter(class ProList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -25,13 +27,13 @@ class ProList extends Component {
   render(){
     return (
       <div>
-        <div className="pro-container">
+        <div className = "pro-container">
           {
             this.state.proLists.map(item=>
-              <div className="pro-item" key={item.goods_id}>
-                <img src={item.thumb_url} alt={item.short_name} className="item-img"/>
+              <div className = "pro-item" key = {item.goods_id} onClick = {()=>this.seeDetails(item)}>
+                <img src = {item.thumb_url} alt = {item.short_name} className = "item-img"/>
                 <p className="item-title">{item.goods_name}</p>
-                <div className="item-bottom">
+                <div className = "item-bottom">
                   <span className = "item-price">￥{item.normal_price/100}</span>
                   <span className = "item-old-price">￥{item.market_price/100}</span>
                   <span className = "item-total">已团{date_format(item.cnt)}件</span>
@@ -43,11 +45,14 @@ class ProList extends Component {
       </div>
     )
   }
-}
+  seeDetails(row){
+    this.props.history.push(`/details/${row.goods_id}`)
+  }
+})
+
 const date_format = date => {
   if(date>1000){
-    return (date/10000).toFixed(1) +'万'
+    return (date/10000).toFixed(1)  + '万'
   }
   return date
 }
-export default  ProList
