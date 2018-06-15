@@ -46,7 +46,7 @@ export default withRouter(class ProList extends React.Component {
     )
   }
   seeDetails(row){
-    this.props.history.push(`/details/${row.goods_id}`)
+    this.props.history.push({pathname:`/details`,state: {id:row.goods_id}})
   }
 })
 

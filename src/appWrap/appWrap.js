@@ -19,7 +19,7 @@ export default class AppWrap extends React.Component{
           <Header/>
           <Switch>
             <Route exact path = '/' component = { ProList }/>
-            <Route path = '/details/:id' component = { Details }/>
+            <Route path = '/details' component = { Details }/>
             <Route component = { NotFund }/>
           </Switch>
         </div>

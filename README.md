@@ -58,3 +58,12 @@ export default withRouter(
 >查了好多相关资料，都说可以使用 `this.props.params`访问，但是我怎么都访问不到
 我于是打印了相关数据，发现 `this.props.match.params`可以获得相关参数，不知道是我的问题还是新的路由修改了。。。
 
+###### 另一种传递参数的方式（不在url中显示）
+```
+//跳转
+this.props.history.push({pathname:'',state: {key:value}})
+
+// 获取
+this.props.location.state.key
+```
+
