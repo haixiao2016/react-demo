@@ -11,7 +11,7 @@ class ProList extends Component {
   
   componentDidMount() {
     // dom渲染完成，获取数据
-    axois.get( `https://apiv2.pinduoduo.com/subject/502/sorted_goods`,{sort_type:'PRIORITY',page:1,size:100})
+    axois.get( `/subject/502/sorted_goods`,{sort_type:'PRIORITY',page:1,size:100})
       .then(res=>{
         const proLists = res.data.goods_list
         this.setState({
